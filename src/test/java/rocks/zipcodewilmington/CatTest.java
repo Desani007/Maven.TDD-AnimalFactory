@@ -2,8 +2,13 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -39,5 +44,68 @@ public class CatTest {
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
     }
+
+    @Test
+    public void setNameTest(){
+        String expected = "jimmy";
+
+   Cat testing = new Cat(expected,null,null);
+   String actual = testing.getName();
+   Assert.assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void setBirthDateTest() throws ParseException {
+
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = dateformat.parse("1994-04-26");
+        Cat testing = new Cat(null,date,null);
+         Date actual = testing.getBirthDate();
+        Assert.assertEquals(date,actual);
+
+    }
+
+    @Test
+    public void speakTest(){
+        Cat testCat = new Cat(null,null,null);
+        String expected ="meow!";
+        String actual = testCat.speak();
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public  void eatTest (){
+        Cat testCat = new Cat(null,null,null);
+        Integer expected =1;
+        Food food = new Food();
+        testCat.eat(food);
+       Integer actual = testCat.getNumberOfMealsEaten();
+       Assert.assertEquals(expected,actual);
+
+    }
+    @Test
+    public void getIdTest() throws ParseException {
+
+       Integer expected =1;
+        Cat testing = new Cat(null,null,1);
+        Integer actual=testing.getId();
+        Assert.assertEquals(expected,actual);
+
+    }
+    @Test
+    public void isAnimalInstanceOfTest (){
+        Cat cat = new Cat(null,null,null);
+        boolean actual= cat.isInstanceOfAnimal();
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void isMammalInstanceOfTest (){
+        Cat cat = new Cat(null,null,null);
+        boolean actual= cat.isInstanceOfMammal();
+        Assert.assertTrue(actual);
+    }
+
 
 }

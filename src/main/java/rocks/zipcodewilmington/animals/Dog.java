@@ -13,4 +13,14 @@ public class Dog extends Mammal {
     public String speak() {
         return "bark!";
     }
+
+    public boolean isInstanceOfAnimal() {
+        Dog dog = new Dog(null, null, null);
+        return dog instanceof Animal;
+    }
+
+    public boolean isInstanceOfMammal() {
+        Dog dog = new Dog(null, null, null);
+        return dog instanceof Mammal;
+    }
 }
